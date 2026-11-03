@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 <head>
+  <script src="consent.js"></script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -10,37 +11,57 @@
   <!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TurboAds – Google Ads that bring leads</title>
+  <title>TurboAds – Google reklama autoservisams</title>
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="TurboAds – Google Ads campaigns for local businesses in Lithuania.">
+  <meta name="description" content="Google reklama autoservisams Lietuvoje. Daugiau klientų iš jūsų miesto.">
   <style>
-    :root { --brand: #0b5fff; --dark: #111827; --muted: #6b7280; --bg: #f5f7fb; }
+    :root { --brand: #e11d2e; --dark: #0f172a; --muted: #64748b; --bg: #f8fafc; --line: #e2e8f0; }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--dark); background: var(--bg); line-height: 1.55; }
-    header { background: #fff; border-bottom: 1px solid #e5e7eb; }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
-    .nav { display: flex; justify-content: space-between; align-items: center; height: 64px; }
-    .logo { font-weight: 800; font-size: 1.4rem; color: var(--dark); text-decoration: none; }
-    .logo span { color: var(--brand); }
-    .hero { padding: 72px 0 56px; text-align: center; }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 12px; }
-    .hero p { color: var(--muted); font-size: 1.15rem; margin: 0 auto 28px; max-width: 560px; }
-    .btn { display: inline-block; padding: 12px 22px; border-radius: 10px; font-weight: 600; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; }
-    .btn-primary { background: var(--brand); color: #fff; }
-    .btn-light { background: #fff; color: var(--dark); border: 1px solid #d1d5db; }
-    .buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; padding: 24px 0 56px; }
-    .card { background: #fff; border-radius: 14px; padding: 22px; border: 1px solid #e5e7eb; }
-    .card h3 { margin: 0 0 6px; }
-    .card p { margin: 0; color: var(--muted); }
-    section.contact { background: #fff; border-top: 1px solid #e5e7eb; padding: 56px 0; }
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
-    .contact-list a { display: block; margin: 10px 0; color: var(--brand); font-weight: 600; text-decoration: none; }
-    form label { display: block; font-weight: 600; margin: 12px 0 4px; }
-    form input, form textarea { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font: inherit; }
-    form button { margin-top: 16px; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--dark); background: var(--bg); line-height: 1.6; }
+    a { color: inherit; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
     .test-bar { background: #fde68a; color: #78350f; text-align: center; font-weight: 600; padding: 8px 12px; font-size: .9rem; }
-    footer { text-align: center; color: var(--muted); padding: 24px 0; font-size: .9rem; }
+    header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+    .nav { display: flex; justify-content: space-between; align-items: center; height: 64px; gap: 16px; }
+    .logo { font-weight: 800; font-size: 1.4rem; text-decoration: none; }
+    .logo span { color: var(--brand); }
+    .nav-links { display: flex; gap: 22px; font-weight: 500; }
+    .nav-links a { text-decoration: none; color: var(--muted); }
+    .btn { display: inline-block; padding: 12px 22px; border-radius: 10px; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; }
+    .btn-primary { background: var(--brand); color: #fff; }
+    .btn-light { background: #fff; color: var(--dark); border: 1px solid #cbd5e1; }
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; padding: 80px 0 72px; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.15; margin: 0 0 16px; max-width: 720px; }
+    .hero h1 span { color: #f87171; }
+    .hero p { color: #cbd5e1; font-size: 1.15rem; margin: 0 0 30px; max-width: 620px; }
+    .buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    section { padding: 64px 0; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin: 0 0 10px; }
+    .lead { color: var(--muted); margin: 0 0 32px; max-width: 640px; font-size: 1.05rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card { background: #fff; border-radius: 14px; padding: 24px; border: 1px solid var(--line); }
+    .card .ico { font-size: 1.8rem; }
+    .card h3 { margin: 8px 0 6px; font-size: 1.15rem; }
+    .card p { margin: 0; color: var(--muted); }
+    .white { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .ad { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; max-width: 600px; box-shadow: 0 4px 18px rgba(15,23,42,.06); }
+    .ad small { color: var(--muted); }
+    .ad .t { color: #1a0dab; font-size: 1.2rem; margin: 4px 0; }
+    .ad p { margin: 0; color: #4d5156; }
+    .search { background: #fff; border: 1px solid #dfe1e5; border-radius: 999px; padding: 10px 18px; max-width: 600px; margin-bottom: 14px; color: #202124; }
+    .steps { counter-reset: s; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+    .steps .card h3::before { counter-increment: s; content: counter(s); display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--brand); color: #fff; font-size: .95rem; margin-right: 10px; }
+    details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; }
+    summary { font-weight: 600; cursor: pointer; }
+    details p { color: var(--muted); margin: 10px 0 0; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; }
+    .contact-list a { display: block; margin: 12px 0; color: var(--brand); font-weight: 700; text-decoration: none; font-size: 1.05rem; }
+    form { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+    form label { display: block; font-weight: 600; margin: 12px 0 4px; }
+    form input, form textarea, form select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font: inherit; background: #fff; }
+    form button { margin-top: 18px; width: 100%; }
+    footer { text-align: center; color: var(--muted); padding: 28px 0; font-size: .9rem; }
+    @media (max-width: 720px) { .nav-links { display: none; } }
   </style>
 </head>
 <body>
@@ -48,34 +69,90 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BJ97F9K"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="test-bar">TEST WEBSITE – used to test conversion tracking. The phone, email and form are not real.</div>
+
+  <div class="test-bar">TESTINIS PUSLAPIS – skirtas konversijų sekimui išbandyti. Telefonas, el. paštas ir forma netikri.</div>
+
   <header>
     <div class="wrap nav">
       <a class="logo" href="/">Turbo<span>Ads</span></a>
-      <a class="btn btn-primary" href="tel:+37000000000">Call us</a>
+      <nav class="nav-links">
+        <a href="#paslaugos">Paslaugos</a>
+        <a href="#kaip">Kaip dirbame</a>
+        <a href="#duk">Klausimai</a>
+        <a href="#kontaktai">Kontaktai</a>
+      </nav>
+      <a class="btn btn-primary" href="tel:+37000000000">Skambinti</a>
     </div>
   </header>
 
   <main>
-    <section class="hero wrap">
-      <h1>Google Ads that bring real leads</h1>
-      <p>We build and run Google Ads campaigns for local businesses in Lithuania – set up fast, tracked properly, improved every week.</p>
-      <div class="buttons">
-        <a class="btn btn-primary" href="#contact">Get a free check</a>
-        <a class="btn btn-light" href="tel:+37000000000">+370 000 00000</a>
+    <section class="hero">
+      <div class="wrap">
+        <h1><span>Google reklama</span> autoservisams</h1>
+        <p>Daugiau klientų iš jūsų miesto. Kai reikia pakeisti padangas ar sutaisyti automobilį, žmonės ieško Google – pasirūpinsime, kad pirmiausia rastų jūsų servisą.</p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#kontaktai">Nemokama konsultacija</a>
+          <a class="btn btn-light" href="tel:+37000000000">📞 +370 000 00000</a>
+        </div>
       </div>
     </section>
 
-    <section class="wrap cards">
-      <div class="card"><h3>Campaign setup</h3><p>Search and Performance Max campaigns built around your services and area.</p></div>
-      <div class="card"><h3>Lead tracking</h3><p>Calls, forms and messages counted as conversions, so you see what works.</p></div>
-      <div class="card"><h3>Weekly optimisation</h3><p>Wasted clicks cut, good keywords scaled, clear monthly reports.</p></div>
+    <section id="paslaugos">
+      <div class="wrap">
+        <h2>Reklama, pritaikyta autoservisams</h2>
+        <p class="lead">Jokių bendrų šablonų – reklamą kuriame pagal jūsų paslaugas, miestą ir darbo laiką.</p>
+        <div class="grid">
+          <div class="card"><div class="ico">📍</div><h3>Tik jūsų mieste</h3><p>Reklamą rodome tik žmonėms jūsų mieste ar rajone, todėl nemokate už paspaudimus iš kitur.</p></div>
+          <div class="card"><div class="ico">🔧</div><h3>Kiekvienai paslaugai – sava reklama</h3><p>Padangos, diagnostika, kondicionieriai, stabdžiai – žmogus iškart mato tai, ko ieškojo.</p></div>
+          <div class="card"><div class="ico">🕗</div><h3>Kai jūs dirbate</h3><p>Reklama rodoma darbo valandomis, kai galite atsiliepti. Per sezoną daugiau dėmesio skiriame padangoms, vasarą – kondicionieriams.</p></div>
+          <div class="card"><div class="ico">🚫</div><h3>Nemokate už tuščius paspaudimus</h3><p>Atsijojame paieškas, iš kurių klientų nebus, pvz., „darbas autoservise“ ar „kaip pačiam pasikeisti tepalus“.</p></div>
+          <div class="card"><div class="ico">📊</div><h3>Paprastos ataskaitos</h3><p>Kartą per mėnesį gaunate trumpą ataskaitą: kiek išleista, kiek buvo skambučių ir užklausų, ką darysime toliau.</p></div>
+        </div>
+      </div>
     </section>
 
-    <section class="contact" id="contact">
+    <section class="white">
+      <div class="wrap">
+        <h2>Taip atrodys jūsų reklama</h2>
+        <p class="lead">Pavyzdys, kaip ją matys žmonės Google paieškoje.</p>
+        <div class="search">🔍 padangų keitimas vilnius</div>
+        <div class="ad">
+          <small><b>Remiama</b> · jususervisas.lt</small>
+          <div class="t">Padangų keitimas Vilniuje | Registruokitės šiandien</div>
+          <p>Greitai pakeisime ir subalansuosime padangas. Šią savaitę dar yra laisvų laikų. Skambinkite arba registruokitės internetu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kaip">
+      <div class="wrap">
+        <h2>Kaip dirbame</h2>
+        <p class="lead">Reklamą paleidžiame per kelias dienas.</p>
+        <div class="grid steps">
+          <div class="card"><h3>Pasikalbame</h3><p>Išsiaiškiname, kokias paslaugas teikiate, kokios kainos, darbo laikas ir kokių klientų norėtumėte daugiau.</p></div>
+          <div class="card"><h3>Paruošiame reklamą</h3><p>Parenkame paieškos frazes, parašome tekstus, nustatome teritoriją ir biudžetą. Prieš paleisdami viską parodome jums.</p></div>
+          <div class="card"><h3>Įdiegiame sekimą</h3><p>Nustatome, kad būtų skaičiuojami skambučiai, užklausos ir žinutės – matysite tikrus rezultatus.</p></div>
+          <div class="card"><h3>Prižiūrime kas savaitę</h3><p>Stebime rezultatus, mažiname vieno kliento kainą ir daugiau skiriame tam, kas veikia.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="duk" class="white">
+      <div class="wrap">
+        <h2>Dažniausi klausimai</h2>
+        <p class="lead">Neradote atsakymo? Parašykite arba paskambinkite.</p>
+        <details><summary>Kiek reikia skirti reklamai?</summary><p>Priklauso nuo miesto ir paslaugų. Prieš pradėdami pažiūrime, kiek žmonių jūsų apylinkėse ieško tokių paslaugų ir kiek kainuoja paspaudimas, ir pasiūlome realų biudžetą.</p></details>
+        <details><summary>Kam priklauso Google Ads paskyra?</summary><p>Jums. Už reklamą Google mokate tiesiogiai, o mes ją sukuriame ir prižiūrime.</p></details>
+        <details><summary>Ar būtina turėti svetainę?</summary><p>Geriau, jei ji yra, bet galima pradėti ir be jos – su reklama, kurią paspaudus iškart skambinama, arba su užklausos forma pačioje reklamoje.</p></details>
+        <details><summary>Ar reikės pasirašyti ilgalaikę sutartį?</summary><p>Ne. Dirbame kas mėnesį – jei rezultatai netenkins, galėsite bet kada nutraukti.</p></details>
+      </div>
+    </section>
+
+    <section id="kontaktai">
       <div class="wrap contact-grid">
         <div>
-          <h2>Contact us</h2>
+          <h2>Susisiekite</h2>
+          <p class="lead">Nemokamai įvertinsime, kiek klientų jūsų servisui galėtų atvesti Google reklama.</p>
           <div class="contact-list">
             <a href="tel:+37000000000">📞 +370 000 00000</a>
             <a href="mailto:test@example.com">✉️ test@example.com</a>
@@ -83,24 +160,26 @@
             <a href="viber://chat?number=%2B37000000000">📱 Viber</a>
             <a href="https://m.me/turboads.test" target="_blank" rel="noopener">💭 Messenger</a>
           </div>
-          <p>Test address: Testo g. 1, Vilnius · Mon–Fri 9:00–18:00</p>
+          <p>Testinis adresas: Testo g. 1, Vilnius<br>I–V 9:00–18:00</p>
         </div>
         <form id="contact-form" action="thanks.html" method="get">
-          <h2>Send a request</h2>
-          <label for="name">Name</label>
+          <h2>Palikite užklausą</h2>
+          <label for="name">Vardas</label>
           <input id="name" required>
-          <label for="email">Email</label>
-          <input id="email" type="email" required>
-          <label for="phone">Phone</label>
-          <input id="phone" type="tel">
-          <label for="message">Message</label>
-          <textarea id="message" rows="4"></textarea>
-          <button class="btn btn-primary" type="submit">Send</button>
+          <label for="service">Autoservisas ir miestas</label>
+          <input id="service" required>
+          <label for="phone">Telefonas</label>
+          <input id="phone" type="tel" required>
+          <label for="email">El. paštas</label>
+          <input id="email" type="email">
+          <label for="message">Ką norėtumėte reklamuoti?</label>
+          <textarea id="message" rows="3" placeholder="Pvz., padangų keitimą, diagnostiką…"></textarea>
+          <button class="btn btn-primary" type="submit">Siųsti</button>
         </form>
       </div>
     </section>
   </main>
 
-  <footer>© 2026 TurboAds · turboads.lt · test site, not a real business contact</footer>
+  <footer>© 2026 TurboAds · turboads.lt · testinis puslapis, kontaktai netikri<br><a href="slapukai.html">Slapukai</a> · <a href="#" onclick="return openCookieSettings()">Slapukų nustatymai</a></footer>
 </body>
 </html>
