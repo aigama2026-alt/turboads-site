@@ -7,7 +7,7 @@
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5BJ97F9K');</script>
+  })(window,document,'script','dataLayer','GTM-TS2T8J6V');</script>
   <!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -34,7 +34,7 @@
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BJ97F9K"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS2T8J6V"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
@@ -115,13 +115,13 @@
       function say(t, bad) { st.textContent = t; st.className = 'form-status' + (bad ? ' bad' : ''); }
       f.addEventListener('submit', function (e) {
         e.preventDefault();
-        if (f.querySelector('[name=_honey]').value) return;
+        if (f.querySelector('[name=botcheck]').checked) return;
         var data = {};
-        new FormData(f).forEach(function (v, k) { if (k !== '_next' && k !== '_honey') data[k] = v; });
+        new FormData(f).forEach(function (v, k) { if (k !== 'redirect' && k !== 'botcheck') data[k] = v; });
         btn.disabled = true; btn.textContent = 'Siunčiama…'; say('');
         var ctrl = window.AbortController ? new AbortController() : null;
         var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
-        fetch('https://formsubmit.co/ajax/info@turboads.lt', {
+        fetch('https://api.web3forms.com/submit', {
           method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined
         }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
@@ -132,9 +132,7 @@
               location.href = '/thanks';
               return;
             }
-            var msg = String(res.j.message || '');
-            if (/activat/i.test(msg)) say('Forma dar neaktyvuota. Savininkui išsiųstas aktyvavimo laiškas – kol kas skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
-            else say('Nepavyko išsiųsti. Skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
+            say('Nepavyko išsiųsti. Skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
             btn.disabled = false; btn.textContent = 'Siųsti užklausą';
           })
           .catch(function () {
