@@ -123,7 +123,7 @@
         <p>Užklausas saugome iki 12 mėnesių, jei sutartis nesudaroma. Sudarius sutartį – tiek, kiek reikia paslaugoms teikti ir kiek reikalauja buhalterinės apskaitos teisės aktai.</p>
         <h2>Kam perduodame duomenis</h2>
         <ul>
-          <li>FormSubmit – užklausos formos duomenis perduoda mums el. paštu;</li>
+          <li>Web3Forms – užklausos formos duomenis perduoda mums el. paštu;</li>
           <li>el. pašto paslaugų teikėjui, per kurį gauname laiškus;</li>
           <li>Google (Google Tag Manager, Google Analytics, Google Ads) – tik jei sutikote su statistikos ar reklamos slapukais.</li>
         </ul>
@@ -166,13 +166,13 @@
       function say(t, bad) { st.textContent = t; st.className = 'form-status' + (bad ? ' bad' : ''); }
       f.addEventListener('submit', function (e) {
         e.preventDefault();
-        if (f.querySelector('[name=_honey]').value) return;
+        if (f.querySelector('[name=botcheck]').checked) return;
         var data = {};
-        new FormData(f).forEach(function (v, k) { if (k !== '_next' && k !== '_honey') data[k] = v; });
+        new FormData(f).forEach(function (v, k) { if (k !== 'redirect' && k !== 'botcheck') data[k] = v; });
         btn.disabled = true; btn.textContent = 'Siunčiama…'; say('');
         var ctrl = window.AbortController ? new AbortController() : null;
         var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
-        fetch('https://formsubmit.co/ajax/info@turboads.lt', {
+        fetch('https://api.web3forms.com/submit', {
           method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined
         }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
@@ -183,9 +183,7 @@
               location.href = '/thanks';
               return;
             }
-            var msg = String(res.j.message || '');
-            if (/activat/i.test(msg)) say('Forma dar neaktyvuota. Savininkui išsiųstas aktyvavimo laiškas – kol kas skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
-            else say('Nepavyko išsiųsti. Skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
+            say('Nepavyko išsiųsti. Skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
             btn.disabled = false; btn.textContent = 'Siųsti užklausą';
           })
           .catch(function () {

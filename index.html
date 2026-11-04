@@ -375,13 +375,13 @@
           </div>
           <p class="company"><b>M. Stankaus individuali veikla</b><br>PVM mokėtojo kodas: LT100019181514</p>
         </div>
-        <form id="contact-form" action="https://formsubmit.co/info@turboads.lt" method="POST">
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
           <h2>Palikite užklausą</h2>
-          <input type="hidden" name="_subject" value="Nauja užklausa iš turboads.lt">
-          <input type="hidden" name="_next" value="https://turboads.lt/thanks">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <div class="hp" aria-hidden="true"><label for="hp">Nepildykite</label><input id="hp" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+          <input type="hidden" name="access_key" value="16f56917-4def-475e-b1c3-ebe5d9a1ff0f">
+          <input type="hidden" name="subject" value="Nauja užklausa iš turboads.lt">
+          <input type="hidden" name="from_name" value="turboads.lt">
+          <input type="hidden" name="redirect" value="https://turboads.lt/thanks">
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label for="name">Vardas</label>
           <input id="name" name="Vardas" autocomplete="name" required>
           <label for="service">Autoservisas ir miestas</label>
@@ -431,13 +431,13 @@
       function say(t, bad) { st.textContent = t; st.className = 'form-status' + (bad ? ' bad' : ''); }
       f.addEventListener('submit', function (e) {
         e.preventDefault();
-        if (f.querySelector('[name=_honey]').value) return;
+        if (f.querySelector('[name=botcheck]').checked) return;
         var data = {};
-        new FormData(f).forEach(function (v, k) { if (k !== '_next' && k !== '_honey') data[k] = v; });
+        new FormData(f).forEach(function (v, k) { if (k !== 'redirect' && k !== 'botcheck') data[k] = v; });
         btn.disabled = true; btn.textContent = 'Siunčiama…'; say('');
         var ctrl = window.AbortController ? new AbortController() : null;
         var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
-        fetch('https://formsubmit.co/ajax/info@turboads.lt', {
+        fetch('https://api.web3forms.com/submit', {
           method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined
         }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
@@ -448,9 +448,7 @@
               location.href = '/thanks';
               return;
             }
-            var msg = String(res.j.message || '');
-            if (/activat/i.test(msg)) say('Forma dar neaktyvuota. Savininkui išsiųstas aktyvavimo laiškas – kol kas skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
-            else say('Nepavyko išsiųsti. Skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
+            say('Nepavyko išsiųsti. Skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
             btn.disabled = false; btn.textContent = 'Siųsti užklausą';
           })
           .catch(function () {
