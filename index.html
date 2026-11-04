@@ -385,14 +385,15 @@
           <label for="name">Vardas</label>
           <input id="name" name="Vardas" autocomplete="name" required>
           <label for="service">Autoservisas ir miestas</label>
-          <input id="service" name="Autoservisas ir miestas" autocomplete="organization" required>
+          <input id="service" name="Autoservisas_ir_miestas" autocomplete="organization" required>
           <label for="phone">Telefonas</label>
           <input id="phone" name="Telefonas" type="tel" autocomplete="tel" inputmode="tel" required>
           <label for="email">El. paštas</label>
           <input id="email" name="email" type="email" autocomplete="email">
           <label for="message">Ką norėtumėte reklamuoti?</label>
-          <textarea id="message" name="Žinutė" rows="3" placeholder="Pvz., padangų keitimą, diagnostiką…"></textarea>
+          <textarea id="message" name="Zinute" rows="3" placeholder="Pvz., padangų keitimą, diagnostiką…"></textarea>
           <button class="btn btn-primary" type="submit">Siųsti užklausą</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
           <p class="consent-note">Jūsų duomenis naudosime tik atsakyti į užklausą. Daugiau – <a href="/privatumas">privatumo politikoje</a>.</p>
         </form>
       </div>
@@ -421,6 +422,42 @@
       });
       m.addEventListener('click', function (e) {
         if (e.target.tagName === 'A') { m.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); }
+      });
+    })();
+    (function () {
+      var f = document.getElementById('contact-form');
+      if (!f || !window.fetch) return;
+      var btn = f.querySelector('button[type=submit]'), st = f.querySelector('.form-status');
+      function say(t, bad) { st.textContent = t; st.className = 'form-status' + (bad ? ' bad' : ''); }
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (f.querySelector('[name=_honey]').value) return;
+        var data = {};
+        new FormData(f).forEach(function (v, k) { if (k !== '_next' && k !== '_honey') data[k] = v; });
+        btn.disabled = true; btn.textContent = 'Siunčiama…'; say('');
+        var ctrl = window.AbortController ? new AbortController() : null;
+        var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
+        fetch('https://formsubmit.co/ajax/info@turboads.lt', {
+          method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined
+        }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+          .then(function (res) {
+            clearTimeout(timer);
+            if (res.ok && String(res.j.success) === 'true') {
+              (window.dataLayer = window.dataLayer || []).push({ event: 'form_success', form_id: 'contact-form' });
+              location.href = '/thanks';
+              return;
+            }
+            var msg = String(res.j.message || '');
+            if (/activat/i.test(msg)) say('Forma dar neaktyvuota. Savininkui išsiųstas aktyvavimo laiškas – kol kas skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
+            else say('Nepavyko išsiųsti. Skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
+            btn.disabled = false; btn.textContent = 'Siųsti užklausą';
+          })
+          .catch(function () {
+            clearTimeout(timer);
+            say('Nepavyko išsiųsti (ryšio klaida). Skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
+            btn.disabled = false; btn.textContent = 'Siųsti užklausą';
+          });
       });
     })();
   </script>

@@ -147,6 +147,42 @@
         if (e.target.tagName === 'A') { m.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); }
       });
     })();
+    (function () {
+      var f = document.getElementById('contact-form');
+      if (!f || !window.fetch) return;
+      var btn = f.querySelector('button[type=submit]'), st = f.querySelector('.form-status');
+      function say(t, bad) { st.textContent = t; st.className = 'form-status' + (bad ? ' bad' : ''); }
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (f.querySelector('[name=_honey]').value) return;
+        var data = {};
+        new FormData(f).forEach(function (v, k) { if (k !== '_next' && k !== '_honey') data[k] = v; });
+        btn.disabled = true; btn.textContent = 'Siunčiama…'; say('');
+        var ctrl = window.AbortController ? new AbortController() : null;
+        var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
+        fetch('https://formsubmit.co/ajax/info@turboads.lt', {
+          method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined
+        }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+          .then(function (res) {
+            clearTimeout(timer);
+            if (res.ok && String(res.j.success) === 'true') {
+              (window.dataLayer = window.dataLayer || []).push({ event: 'form_success', form_id: 'contact-form' });
+              location.href = '/thanks';
+              return;
+            }
+            var msg = String(res.j.message || '');
+            if (/activat/i.test(msg)) say('Forma dar neaktyvuota. Savininkui išsiųstas aktyvavimo laiškas – kol kas skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
+            else say('Nepavyko išsiųsti. Skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
+            btn.disabled = false; btn.textContent = 'Siųsti užklausą';
+          })
+          .catch(function () {
+            clearTimeout(timer);
+            say('Nepavyko išsiųsti (ryšio klaida). Skambinkite +370 654 48130 arba rašykite info@turboads.lt.', true);
+            btn.disabled = false; btn.textContent = 'Siųsti užklausą';
+          });
+      });
+    })();
   </script>
 </body>
 </html>

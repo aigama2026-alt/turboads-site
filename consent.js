@@ -1,7 +1,7 @@
 /* TurboAds slapukų juosta + Google Consent Mode v2.
    Šis failas turi būti įkeltas <head> dalyje PRIEŠ Google Tag Manager kodą. */
 (function () {
-  var KEY = 'turboads_consent';
+  var KEY = 'turboads_consent_v2';
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   window.gtag = window.gtag || gtag;
