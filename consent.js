@@ -55,7 +55,7 @@
     box.setAttribute('aria-label', 'Slapukų nustatymai');
     box.innerHTML =
       '<p><b>Naudojame slapukus.</b> Būtini slapukai reikalingi, kad svetainė veiktų. Su jūsų sutikimu naudosime ir ' +
-      'Google slapukus lankomumui bei reklamos rezultatams matuoti. <a href="slapukai.html">Daugiau apie slapukus</a></p>' +
+      'Google slapukus lankomumui bei reklamos rezultatams matuoti. <a href="/slapukai">Daugiau apie slapukus</a></p>' +
       '<div class="cb-btns"><button type="button" class="cb-no">Tik būtini</button>' +
       '<button type="button" class="cb-yes">Sutinku su visais</button></div>';
     document.body.appendChild(box);
