@@ -43,10 +43,10 @@
       '#cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;max-width:720px;margin:0 auto;' +
       'background:#fff;color:#0f172a;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 10px 30px rgba(15,23,42,.18);' +
       'padding:18px 20px;font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}' +
-      '#cookie-banner p{margin:0 0 14px}#cookie-banner a{color:#e11d2e}' +
+      '#cookie-banner p{margin:0 0 14px}#cookie-banner a{color:#e4560a}' +
       '#cookie-banner .cb-btns{display:flex;gap:10px;flex-wrap:wrap}' +
-      '#cookie-banner button{flex:1 1 160px;padding:11px 16px;border-radius:10px;font:inherit;font-weight:700;cursor:pointer;border:1px solid #0f172a}' +
-      '#cookie-banner .cb-yes{background:#0f172a;color:#fff}#cookie-banner .cb-no{background:#fff;color:#0f172a}';
+      '#cookie-banner button{flex:1 1 160px;padding:11px 16px;border-radius:10px;font:inherit;font-weight:700;cursor:pointer;border:1px solid #15181c}' +
+      '#cookie-banner .cb-yes{background:#ff6a13;border-color:#ff6a13;color:#fff}#cookie-banner .cb-no{background:#fff;color:#15181c}';
     document.head.appendChild(css);
 
     var box = document.createElement('div');
@@ -55,7 +55,7 @@
     box.setAttribute('aria-label', 'Slapukų nustatymai');
     box.innerHTML =
       '<p><b>Naudojame slapukus.</b> Būtini slapukai reikalingi, kad svetainė veiktų. Su jūsų sutikimu naudosime ir ' +
-      'Google slapukus lankomumui bei reklamos rezultatams matuoti. <a href="/slapukai">Daugiau apie slapukus</a></p>' +
+      'Google Analytics, Google Ads ir Meta slapukus lankomumui bei reklamos rezultatams matuoti. <a href="/slapukai">Daugiau apie slapukus</a></p>' +
       '<div class="cb-btns"><button type="button" class="cb-no">Tik būtini</button>' +
       '<button type="button" class="cb-yes">Sutinku su visais</button></div>';
     document.body.appendChild(box);
