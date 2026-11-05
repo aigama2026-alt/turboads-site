@@ -208,3 +208,9 @@ footer a { color: #aeb6bf; }
 .form-status { margin: 12px 0 0; font-weight: 600; font-size: .95rem; min-height: 1px; }
 .form-status.bad { color: #b42318; background: #fef3f2; border: 1px solid #fecdca; border-radius: 6px; padding: 10px 12px; }
 form button[disabled] { opacity: .7; cursor: wait; }
+
+@media (max-width: 860px) {
+  .prose table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .prose th, .prose td { padding: 8px 10px; font-size: .9rem; }
+}
+.prose a.btn { color: #fff; text-decoration: none; }
